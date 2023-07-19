@@ -54,9 +54,7 @@ java {
 	withSourcesJar()
 }
 
-jarJar {
-	enable()
-}
+jarJar.enable()
 
 mixin {
 	add(sourceSets.main.get(), "${modId}.refmap.json")
@@ -157,9 +155,18 @@ dependencies {
 	}
 
 	// Kotlin
-	api("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-	api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-	api("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+	jarJar("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"){
+		jarJar.pin(this, kotlinVersion)
+	}
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+	jarJar("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion") {
+		jarJar.pin(this, coroutinesVersion)
+	}
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+	jarJar("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion") {
+		jarJar.pin(this, serializationVersion)
+	}
 
 	// JEI Dependency
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-forge-api:${jeiVersion}"))
@@ -174,7 +181,10 @@ dependencies {
 	implementation(fg.deobf("team.lodestar.lodestone:lodestone:${lodestoneVersion}"))
 
 	// Registrate
-	implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrateVersion}"))
+	implementation("com.tterrag.registrate:Registrate:${registrateVersion}")
+	jarJar("com.tterrag.registrate:Registrate:${registrateVersion}") {
+		jarJar.pin(this, registrateVersion)
+	}
 }
 
 tasks.withType<ProcessResources> {
