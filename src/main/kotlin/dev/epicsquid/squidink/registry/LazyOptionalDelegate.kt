@@ -18,6 +18,6 @@ class LazyOptionalDelegate<V>(val lazyOpt: LazyOptional<V>) : ReadOnlyProperty<A
 		}
 }
 
-fun <V : Any> lazyOpt(
-	supplier: () -> V
+inline fun <reified V : Any> lazyOpt(
+	noinline supplier: () -> V
 ) = LazyOptionalDelegate(LazyOptional.of(supplier))

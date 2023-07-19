@@ -156,7 +156,7 @@ dependencies {
 
 	// Kotlin
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-	jarJar("org.jetbrains.kotlin:kotlin-stdlib:[$kotlinVersion, )"){
+	jarJar("org.jetbrains.kotlin:kotlin-stdlib:[$kotlinVersion, )") {
 		jarJar.pin(this, kotlinVersion)
 	}
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")

@@ -11,6 +11,6 @@ class RegistryEntryDelegate<V>(private val registryEntry: RegistryEntry<V>) : Re
 	override fun invoke(): V = registryEntry.get()
 }
 
-fun <V : Any> registryEntry(
+inline fun <reified V : Any> registryEntry(
 	supplier: () -> RegistryEntry<V>
 ) = RegistryEntryDelegate(supplier())
