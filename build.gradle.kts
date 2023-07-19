@@ -156,15 +156,15 @@ dependencies {
 
 	// Kotlin
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-	jarJar("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"){
+	jarJar("org.jetbrains.kotlin:kotlin-stdlib:[$kotlinVersion, )"){
 		jarJar.pin(this, kotlinVersion)
 	}
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-	jarJar("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion") {
+	jarJar("org.jetbrains.kotlinx:kotlinx-coroutines-core:[$coroutinesVersion,)") {
 		jarJar.pin(this, coroutinesVersion)
 	}
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-	jarJar("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion") {
+	jarJar("org.jetbrains.kotlinx:kotlinx-serialization-json:[$serializationVersion,)") {
 		jarJar.pin(this, serializationVersion)
 	}
 
@@ -178,11 +178,11 @@ dependencies {
 	runtimeOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}"))
 
 	// Lodestone
-	implementation(fg.deobf("team.lodestar.lodestone:lodestone:${lodestoneVersion}"))
+	implementation(fg.deobf("team.lodestar.lodestone:lodestone:$lodestoneVersion"))
 
 	// Registrate
-	implementation("com.tterrag.registrate:Registrate:${registrateVersion}")
-	jarJar("com.tterrag.registrate:Registrate:${registrateVersion}") {
+	implementation("com.tterrag.registrate:Registrate:$registrateVersion")
+	jarJar("com.tterrag.registrate:Registrate:[$registrateVersion,)") {
 		jarJar.pin(this, registrateVersion)
 	}
 }
