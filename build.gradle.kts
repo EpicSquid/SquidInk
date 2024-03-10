@@ -2,8 +2,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 plugins {
-	kotlin("jvm").version("1.9.0")
-	kotlin("plugin.serialization").version("1.9.0")
+	kotlin("jvm").version("1.9.22")
+	kotlin("plugin.serialization").version("1.9.22")
 	id("eclipse")
 	id("idea")
 	id("maven-publish")
@@ -30,7 +30,6 @@ val jeiVersion: String by extra
 val curiosVersion: String by extra
 val mixinVersion: String by extra
 val modJavaVersion: String by extra
-val lodestoneVersion: String by extra
 val kotlinVersion: String by extra
 val coroutinesVersion: String by extra
 val serializationVersion: String by extra
@@ -176,9 +175,6 @@ dependencies {
 	// Curios dependency
 	compileOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}:api"))
 	runtimeOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}"))
-
-	// Lodestone
-	implementation(fg.deobf("team.lodestar.lodestone:lodestone:$lodestoneVersion"))
 
 	// Registrate
 	implementation("com.tterrag.registrate:Registrate:$registrateVersion")
