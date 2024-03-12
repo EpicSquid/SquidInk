@@ -7,7 +7,7 @@ plugins {
 	id("eclipse")
 	id("idea")
 	id("maven-publish")
-	id("net.minecraftforge.gradle").version("[6.0,6.2)")
+	id("net.neoforged.gradle").version("[6.0.18,6.2)")
 	id("org.parchmentmc.librarian.forgegradle").version("1.+")
 	id("org.spongepowered.mixin")
 }
@@ -15,7 +15,7 @@ plugins {
 val minecraftVersion: String by extra
 val minecraftVersionRange: String by extra
 val loaderVersionRange: String by extra
-val forgeVersionRange: String by extra
+val neoforgeVersionRange: String by extra
 val modVersion: String by extra
 val modGroupId: String by extra
 val modId: String by extra
@@ -25,7 +25,7 @@ val modLicense: String by extra
 val modName: String by extra
 val parchmentChannel: String by extra
 val parchmentVersion: String by extra
-val forgeVersion: String by extra
+val neoforgeVersion: String by extra
 val jeiVersion: String by extra
 val curiosVersion: String by extra
 val mixinVersion: String by extra
@@ -144,10 +144,14 @@ repositories {
 			includeGroup("curse.maven")
 		}
 	}
+	maven {
+		name = "Thermal Maven"
+		url = uri("https://maven.covers1624.net/")
+	}
 }
 
 dependencies {
-	minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+	minecraft("net.neoforged:forge:$minecraftVersion-$neoforgeVersion")
 
 	if (System.getProperty("idea.sync.active") != "true") {
 		annotationProcessor("org.spongepowered:mixin:$mixinVersion:processor")
@@ -189,7 +193,7 @@ tasks.withType<ProcessResources> {
 	filesMatching(listOf("META-INF/mods.toml", "pack.mcmeta")) {
 		expand(
 			mapOf(
-				"forgeVersionRange" to forgeVersionRange,
+				"forgeVersionRange" to neoforgeVersionRange,
 				"loaderVersionRange" to loaderVersionRange,
 				"minecraftVersion" to minecraftVersion,
 				"minecraftVersionRange" to minecraftVersionRange,
