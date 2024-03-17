@@ -1,4 +1,4 @@
-modLoader = "javafml"
+modLoader = "kotlinforforge"
 loaderVersion = "${loaderVersionRange}"
 license = "${modLicense}"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
@@ -27,5 +27,11 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraftVersionRange}"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.${ modId }]]
+modId = "kotlinforforge"
+mandatory = false
+versionRange = "${kotlinForForgeVersionRange}"
 ordering = "NONE"
 side = "BOTH"

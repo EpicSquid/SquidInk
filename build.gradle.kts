@@ -33,7 +33,8 @@ val modJavaVersion: String by extra
 val kotlinVersion: String by extra
 val coroutinesVersion: String by extra
 val serializationVersion: String by extra
-val registrateVersion: String by extra
+val kotlinForForgeVersion: String by extra
+val kotlinForForgeVersionRange: String by extra
 
 version = "$minecraftVersion-$modVersion"
 if (System.getenv("BUILD_NUMBER") != null) {
@@ -157,34 +158,21 @@ dependencies {
 		annotationProcessor("org.spongepowered:mixin:$mixinVersion:processor")
 	}
 
+	// Kotlin for Forge
+	implementation("thedarkcolour:kotlinforforge:$kotlinForForgeVersion")
+
 	// Kotlin
-	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-	jarJar("org.jetbrains.kotlin:kotlin-stdlib:[$kotlinVersion, )") {
-		jarJar.pin(this, kotlinVersion)
-	}
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-	jarJar("org.jetbrains.kotlinx:kotlinx-coroutines-core:[$coroutinesVersion,)") {
-		jarJar.pin(this, coroutinesVersion)
-	}
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-	jarJar("org.jetbrains.kotlinx:kotlinx-serialization-json:[$serializationVersion,)") {
-		jarJar.pin(this, serializationVersion)
-	}
 
 	// JEI Dependency
-	compileOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-forge-api:${jeiVersion}"))
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-common-api:${jeiVersion}"))
+	compileOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-forge-api:${jeiVersion}"))
 	runtimeOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-forge:${jeiVersion}"))
 
 	// Curios dependency
 	compileOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}:api"))
 	runtimeOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}"))
-
-	// Registrate
-	implementation("com.tterrag.registrate:Registrate:$registrateVersion")
-	jarJar("com.tterrag.registrate:Registrate:[$registrateVersion,)") {
-		jarJar.pin(this, registrateVersion)
-	}
 }
 
 tasks.withType<ProcessResources> {
@@ -204,6 +192,7 @@ tasks.withType<ProcessResources> {
 				"modName" to modName,
 				"modVersion" to version,
 				"modLicense" to modLicense,
+				"kotlinForForgeVersionRange" to kotlinForForgeVersionRange,
 			)
 		)
 	}
