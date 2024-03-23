@@ -149,6 +149,14 @@ repositories {
 		name = "Thermal Maven"
 		url = uri("https://maven.covers1624.net/")
 	}
+	maven {
+		name = "Kotlin for Forge"
+		setUrl("https://thedarkcolour.github.io/KotlinForForge/")
+	}
+	maven {
+		name = "Gecko Lib"
+		setUrl("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
+	}
 }
 
 dependencies {
