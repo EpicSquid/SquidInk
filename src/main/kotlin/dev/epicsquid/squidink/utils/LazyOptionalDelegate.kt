@@ -1,4 +1,4 @@
-package dev.epicsquid.squidink.registry
+package dev.epicsquid.squidink.utils
 
 import net.minecraftforge.common.util.LazyOptional
 import java.util.function.Supplier
