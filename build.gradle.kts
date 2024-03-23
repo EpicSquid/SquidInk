@@ -224,6 +224,10 @@ tasks.withType<Jar> {
 	finalizedBy("reobfJar")
 }
 
+artifacts {
+	archives(tasks["sourcesJar"])
+}
+
 publishing {
 	publications {
 		register<MavenPublication>("mavenJava") {
